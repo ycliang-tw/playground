@@ -1,5 +1,5 @@
 #pragma once
-//#include <cuda_fp16.h>
+#include <cuda_fp16.h>
 #include <time.h>
 #include <stdlib.h>
 
@@ -50,6 +50,20 @@
 		puts("");                                                            \
 	}                                                                        \
 
+// test template
+#define test_template(type)                                                  \
+	do{                                                                      \
+		type *ma = generate_##type(size, zeroflag)                           \
+		type *mb = generate_##type(size, zeroflag);                          \
+		type *mc = generate_##type(size, czeroflag);                         \
+		cpu_mmul_##type(ma, mb, mc, size);                                   \
+		print_matrix_##type(ma, size);                                       \
+		print_matrix_##type(mb, size);                                       \
+		print_matrix_##type(mc, size);                                       \
+		free(ma);                                                            \
+		free(mb);                                                            \
+		free(mc);                                                            \
+	}while(0)                                                                \
 
 // macro for cuda code generation multiplication of different types of matrix data
 #define gen_cuda_mmul(type)                                                  \
@@ -58,17 +72,13 @@
 		                                                                     \
 	}                                                                        \
 
-//gen_cuda_mmul(int);
-//gen_cuda_mmul(half);
-//gen_cuda_mmul(float);
-//gen_cuda_mmul(double);
-
 void random_int(int* m){	*m = rand()%10; }
 void random_float(float* m){	*m = (float)rand()/(float)RAND_MAX; }
 void random_double(double* m){	*m = (double)rand()/(double)RAND_MAX; }
+void random_half(half* m){	*m = (double)rand()/(double)RAND_MAX; }
 
 gen_data(int);
-//gen_data(half);
+gen_data(half);
 gen_data(float);
 gen_data(double);
 

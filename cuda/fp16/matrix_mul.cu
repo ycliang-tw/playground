@@ -22,12 +22,17 @@ int main()
 		print_matrix_int(ma, size);
 		print_matrix_int(mb, size);
 		print_matrix_int(mc, size);
-	// data host to device 
 
-	// mc = ma * mb;
-	// time 
-	// int_mmul<<<>>>();
-	// // time
+		// data host to device 
+	
+		// mc = ma * mb;
+		// time 
+		// int_mmul<<<>>>();
+		// // time
+
+		free(ma);
+		free(mb);
+		free(mc);
 	}while(0);
 
 	// float
@@ -44,6 +49,10 @@ int main()
 		// // time 
 		// float_mmul<<<>>>();
 		// // time
+
+		free(ma);
+		free(mb);
+		free(mc);
 	}while(0);
 
 	// // half
@@ -66,16 +75,20 @@ int main()
 		print_matrix_double(mb, size);
 		print_matrix_double(mc, size);
 
-	// // mc = ma * mb;
-	// // time 
-	// double_mmul<<<>>>();
-	// // time
+		// // mc = ma * mb;
+		// // time 
+		// double_mmul<<<>>>();
+		// // time
+
+		free(ma);
+		free(mb);
+		free(mc);
+	}while(0);
 
 	// print_mea();
 	// print_mea();
 	// print_mea();
 	// print_mea();
-	}while(0);
 
 	return 0;
 }
