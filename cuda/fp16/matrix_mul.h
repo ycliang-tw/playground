@@ -75,10 +75,10 @@
 void random_int(int* m){	*m = rand()%10; }
 void random_float(float* m){	*m = (float)rand()/(float)RAND_MAX; }
 void random_double(double* m){	*m = (double)rand()/(double)RAND_MAX; }
-void random_half(half* m){	*m = (double)rand()/(double)RAND_MAX; }
+//void random_half(half* m){	*m = (double)rand()/(double)RAND_MAX; }
 
 gen_data(int);
-gen_data(half);
+//gen_data(half);
 gen_data(float);
 gen_data(double);
 

@@ -1,9 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include <cuda_runtime.h>
-#include <cuda.h>
 #include "matrix_mul.h"
+#include "cuda_util.h"
 //#include "time_measure.h"
 
 
@@ -24,7 +23,8 @@ int main()
 		print_matrix_int(mc, size);
 
 		// data host to device 
-	
+		CUDA_matrix(ma, mb);
+
 		// mc = ma * mb;
 		// time 
 		// int_mmul<<<>>>();
@@ -85,10 +85,6 @@ int main()
 		free(mc);
 	}while(0);
 
-	// print_mea();
-	// print_mea();
-	// print_mea();
-	// print_mea();
 
 	return 0;
 }
